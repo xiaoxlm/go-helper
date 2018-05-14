@@ -1,4 +1,4 @@
-package main
+package log
 
 import (
 	"fmt"
@@ -8,9 +8,9 @@ import (
 	"time"
 )
 
-var (
-	default_prefix = "log"
-	default_dir    = "logs/lm/lxq/"
+const (
+	DEFAULT_PREFIX = "log"
+	DEFAULT_DIR    = "logs"
 )
 
 type DefaultLog struct {
@@ -21,7 +21,7 @@ type DefaultLog struct {
 }
 
 func init() {
-	defaultLog := NewDailyWriteLog(default_prefix, default_dir)
+	defaultLog := NewDailyWriteLog(DEFAULT_PREFIX, DEFAULT_DIR)
 	logrus.SetOutput(defaultLog)
 	logrus.SetLevel(logrus.DebugLevel)
 }
@@ -93,9 +93,4 @@ func NewDailyWriteLog(prefix string, dir ...string) *DefaultLog {
 	instance.initFile()
 
 	return instance
-}
-
-func main() {
-
-	Info("logtest")
 }
