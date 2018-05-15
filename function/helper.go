@@ -21,6 +21,34 @@ func MonthFirstDay () int64 {
 	return t.Add(-time.Hour * 8).Unix()
 }
 
+// 每个月最后一天时间戳
+func MonthLastDay () int64 {
+	yearMonth := time.Now().Format("2006-01")
+	timestr := yearMonth + "-01"
+
+	t, _ := time.Parse("2006-01-02", timestr)
+	date := t.AddDate(0, 1, -1)
+	return date.Add(15 * time.Hour).Add(59 * time.Minute).Add(59 * time.Second).Unix()
+}
+
+// 每天开始的时间戳
+func DayBegin () int64 {
+	yearMonthDay := time.Now().Format("2006-01-02")
+	timestr := yearMonthDay + " 00:00:00"
+
+	t, _ := time.Parse("2006-01-02 15:04:05", timestr)
+	return t.Add(-time.Hour * 8).Unix()
+}
+
+// 每天结束的时间戳
+func DayEnd () int64 {
+	yearMonthDay := time.Now().Format("2006-01-02")
+	timestr := yearMonthDay + " 00:00:00"
+
+	t, _ := time.Parse("2006-01-02 15:04:05", timestr)
+	return t.Add(15 * time.Hour).Add(59 * time.Minute).Add(59 * time.Second).Unix()
+}
+
 // 截取小数位数
 func FloatRound(f float64, n int) float64 {
 	format := "%." + strconv.Itoa(n) + "f"
