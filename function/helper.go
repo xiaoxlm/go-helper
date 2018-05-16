@@ -80,7 +80,8 @@ func RandStringRunes(n int) string {
 	return string(b)
 }
 
-func SystemRecover(skip int) {
+// 异常捕获
+func PanicRecover(skip int) {
 	if err := recover(); err != nil {
 		stack := Stack(skip)
 		glog.Printf("[Recovery] panic recovered:\n%s\n%s", err, stack)
