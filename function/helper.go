@@ -7,6 +7,7 @@ package function
 // mac3
 // mac4
 // win3
+// win4
 import (
 	"time"
 	"strconv"
