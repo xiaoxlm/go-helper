@@ -2,6 +2,7 @@ package function
 
 // mac1
 // win1
+// win2
 import (
 	"time"
 	"strconv"
